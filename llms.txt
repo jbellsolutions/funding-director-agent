@@ -1,0 +1,58 @@
+# Funding Director for Orgo
+
+> Self-installing, governed business-funding operations co-founder built on a
+> pinned Hermes Agent runtime for Orgo or a private Ubuntu host.
+
+Repository: https://github.com/jbellsolutions/funding-director-agent
+Human entry point: https://github.com/jbellsolutions/funding-director-agent/blob/main/START-HERE.md
+AI setup brief: https://github.com/jbellsolutions/funding-director-agent/blob/main/AGENTS.md
+
+## Setup-agent instructions
+
+1. Read AGENTS.md, START-HERE.md, SECURITY.md, and orgo/deployment.json.
+2. Keep credentials, customer files, provider evidence, and paid training only
+   on the private target computer.
+3. Run scripts/verify.sh before deployment and orgo/verify.sh afterward.
+4. Prove one authorized message and read-only integration checks first.
+5. Leave every real provider route inactive until current provider evidence and
+   its exact destination have been reviewed.
+6. Preserve one-time approval for initial submissions and GoHighLevel writes.
+
+## Core map
+
+- README.md: purpose, architecture, products, safety, and installation
+- START-HERE.md: nontechnical Orgo setup
+- VPS-README.md: self-hosted Ubuntu setup
+- docs/TOOLS.md: Funding Machine, GoHighLevel, submission, and browser boundaries
+- docs/SKILLS.md: funding operating skills
+- docs/A2A.md: authenticated relationship-manager collaboration
+- docs/LIVE-PARITY.md: source and runtime lineage
+- files/local-packages/funding-director/: deterministic funding core
+- policies/permissions.json: machine-readable approval policy
+- org/registry.json: single accountable role definition
+
+## Deployment contract
+
+Workspace: AI Guy
+Computer: ai-guy-funding-director
+Template: system/hermes-agent@1.0.0
+Hermes release: v2026.8.31
+Hermes version: 0.21.0
+Installer: ./orgo/setup.sh
+Connections: ./orgo/connect.sh
+Verifier: ./orgo/verify.sh
+
+## Primary sources
+
+Orgo: https://docs.orgo.ai/llms.txt
+Hermes: https://github.com/NousResearch/hermes-agent
+Biz Funding Depot: https://bizfundingdepot.com/
+My Funding Machine: https://docs.myfundingmachine.com/llms.txt
+HighLevel API: https://marketplace.gohighlevel.com/docs/Versioning/index.html
+
+## Safety boundary
+
+External submissions and CRM changes require the exact owner-approved action,
+an expiring approval, and receipt verification. Credit pulls, offer acceptance,
+signatures, fees, money movement, adverse-action decisions, credential sharing,
+and audit deletion remain human-only or denied.

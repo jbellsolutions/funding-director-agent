@@ -1,0 +1,16 @@
+[Unit]
+Description=The Operator voice relay (ElevenLabs webhook -> hermes brain)
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=__BASE_DIR__/voice
+ExecStart=__BASE_DIR__/venv/bin/uvicorn relay:app --host 127.0.0.1 --port 8787
+Restart=always
+RestartSec=3
+# hermes one-shots can take up to 55s; give uvicorn workers headroom on stop
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target

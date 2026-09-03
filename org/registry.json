@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "organization": "Funding Director",
+  "authority_root": "human-founder",
+  "workflow_source_of_truth": "Hermes Kanban plus the Funding Director case ledger",
+  "authority_source_of_truth": "policies/permissions.json",
+  "profiles": [
+    {
+      "id": "funding-director",
+      "display_name": "Funding Director",
+      "subtitle": "AI Co-Founder — Funding and Fulfillment",
+      "manager": "human-founder",
+      "department": "business-funding",
+      "role_type": "operating-cofounder",
+      "responsibilities": [
+        "file review",
+        "operational pre-underwriting",
+        "product strategy",
+        "document readiness",
+        "approved submissions",
+        "funder follow-up",
+        "offer comparison",
+        "funding pipeline",
+        "outcome learning"
+      ],
+      "kanban": {
+        "may_own_root": true,
+        "may_create_children": true,
+        "max_concurrent_cases": 3,
+        "requires_independent_review_for_submission": true
+      },
+      "a2a": {
+        "enabled": true,
+        "path": "/",
+        "tenant": "funding-director",
+        "capabilities": [
+          "business-funding",
+          "underwriting-analysis",
+          "product-routing",
+          "submission-operations",
+          "offer-comparison"
+        ]
+      }
+    }
+  ]
+}

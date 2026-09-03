@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "policy": "A destination remains disabled until the owner verifies its contract, endpoint, credentials, receipt, and authorized products.",
+  "destinations": []
+}

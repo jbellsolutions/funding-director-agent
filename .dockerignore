@@ -1,0 +1,7 @@
+*
+!hermes-image/
+!hermes-image/Dockerfile
+!files/
+!files/local-packages/
+!files/local-packages/super-browser/
+!files/local-packages/super-browser/**

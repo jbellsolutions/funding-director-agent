@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="The Operator">
+<meta name="theme-color" content="#0b0f14">
+<title>The Operator — Voice</title>
+<style>
+  html,body{height:100%;margin:0;background:#0b0f14;color:#e6edf3;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+  .wrap{min-height:100%;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:18px;padding:24px;text-align:center}
+  h1{font-size:1.4rem;font-weight:600;margin:0}
+  h1 .compass{margin-right:.4rem}
+  p{max-width:34rem;line-height:1.5;color:#9fb0c0;margin:0;font-size:.95rem}
+  .hint{font-size:.8rem;color:#5c6b7a}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1><span class="compass">🧭</span>The Operator</h1>
+  <p>Tap the orb and talk. Same brain as Slack — memory, calendar, email, Linear.</p>
+  <elevenlabs-convai agent-id="__AGENT_ID__"></elevenlabs-convai>
+  <p class="hint">Add to Home Screen for one-tap access.</p>
+</div>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+</body>
+</html>

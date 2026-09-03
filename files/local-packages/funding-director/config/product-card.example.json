@@ -1,0 +1,31 @@
+{
+  "product_id": "provider-program-slug",
+  "name": "Provider Program Name",
+  "family": "term-loan",
+  "status": "verified",
+  "business_purpose_only": true,
+  "requirements": {
+    "min_amount": 10000,
+    "max_amount": 250000,
+    "min_credit_score": 650,
+    "min_monthly_revenue": 20000,
+    "min_time_in_business_months": 12,
+    "min_ownership_percent": 50,
+    "allowed_states": ["FL"],
+    "max_nsf_count_last_3_months": 3,
+    "max_existing_mca_count": 1
+  },
+  "required_documents": ["business_application", "bank_statements"],
+  "exclusions": ["prohibited-industry-from-current-provider-guide"],
+  "sources": [
+    {
+      "type": "provider-evidence",
+      "url": "private://provider/program/versioned-source",
+      "note": "Current provider-controlled source, verified YYYY-MM-DD"
+    }
+  ],
+  "effective_date": "2026-09-02",
+  "expires_at": "2026-12-01",
+  "provider_id": "provider-slug",
+  "submission_adapter": "browser_playbook"
+}

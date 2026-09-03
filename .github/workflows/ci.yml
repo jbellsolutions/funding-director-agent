@@ -1,0 +1,42 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  template:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Verify public operator template
+        run: ./scripts/verify.sh
+      - name: Verify fresh VPS deployment layout
+        run: sudo ./tests/smoke_deployment.sh
+
+  reviewed-runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Build the exact Funding Director image
+        run: docker build --pull -f hermes-image/Dockerfile -t funding-director-hermes:ci .
+      - name: Prove Hermes and the Slack Agent manifest
+        run: |
+          docker run --rm --entrypoint /opt/hermes/.venv/bin/hermes \
+            funding-director-hermes:ci --version
+          docker run --rm --entrypoint /opt/hermes/.venv/bin/hermes \
+            funding-director-hermes:ci slack manifest --agent-view \
+            > /tmp/slack-manifest.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          manifest = json.loads(Path("/tmp/slack-manifest.json").read_text())
+          assert "agent_view" in manifest["features"]
+          assert "assistant:write" in manifest["oauth_config"]["scopes"]["bot"]
+          assert len(manifest["features"]["slash_commands"]) == 50
+          PY

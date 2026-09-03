@@ -1,0 +1,356 @@
+# Secret-free template. scripts/render_config.py turns this into the private
+# <BASE_DIR>/hermes/data/config.yaml used by Hermes.
+
+model:
+  default: __HERMES_MODEL__
+  provider: openrouter
+  base_url: https://openrouter.ai/api/v1
+
+fallback_providers:
+# __FIREWORKS_START__
+- provider: custom
+  model: accounts/fireworks/models/glm-5p2
+  base_url: https://api.fireworks.ai/inference/v1
+  key_env: FIREWORKS_API_KEY
+# __FIREWORKS_END__
+# __DEEPSEEK_START__
+- provider: custom
+  model: deepseek-v4-pro
+  base_url: https://api.deepseek.com/v1
+  key_env: DEEPSEEK_API_KEY
+# __DEEPSEEK_END__
+# __TOGETHER_START__
+- provider: custom
+  model: deepseek-ai/DeepSeek-V4-Pro
+  base_url: https://api.together.xyz/v1
+  key_env: TOGETHER_API_KEY
+# __TOGETHER_END__
+
+toolsets:
+  - hermes-cli
+  - mcp-funding-director-core
+  - mcp-funding-director-approvals
+
+agent:
+  max_turns: 60
+  gateway_timeout: 1800
+  restart_drain_timeout: 60
+  api_max_retries: 3
+  tool_use_enforcement: auto
+  reasoning_effort: medium
+  verify_on_stop: true
+
+terminal:
+  backend: local
+  cwd: .
+  timeout: 180
+  persistent_shell: true
+  lifetime_seconds: 300
+
+browser:
+  inactivity_timeout: 120
+  command_timeout: 30
+  record_sessions: false
+  allow_private_urls: false
+  auto_local_for_private_urls: true
+
+checkpoints:
+  enabled: true
+  max_snapshots: 50
+  retention_days: 7
+  delete_orphans: true
+
+compression:
+  enabled: true
+  threshold: 0.5
+  target_ratio: 0.2
+  protect_last_n: 20
+  tail_mode: lean
+
+# Preserve the self-improvement loop while requiring the owner to review every
+# agent-authored skill change before it becomes active.
+skills:
+  creation_nudge_interval: 15
+  write_approval: true
+  guard_agent_created: true
+
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  memory_char_limit: 2200
+  user_char_limit: 1375
+  nudge_interval: 10
+  flush_min_turns: 6
+
+delegation:
+  model: __HERMES_MODEL__
+  provider: openrouter
+  base_url: https://openrouter.ai/api/v1
+  inherit_mcp_toolsets: true
+  max_iterations: 50
+  child_timeout_seconds: 600
+  max_concurrent_children: 3
+  max_spawn_depth: 1
+  orchestrator_enabled: true
+  subagent_auto_approve: false
+
+display:
+  personality: __AGENT_PERSONA__
+  theme: midnight
+  streaming: true
+  interim_assistant_messages: true
+  tool_progress: all
+  show_reasoning: false
+  show_cost: false
+
+privacy:
+  redact_pii: true
+
+tts:
+  provider: edge
+  edge:
+    voice: en-US-AriaNeural
+
+stt:
+  enabled: true
+  provider: local
+  local:
+    model: base
+
+voice:
+  max_recording_seconds: 120
+  auto_tts: false
+  beep_enabled: true
+
+approvals:
+  mode: manual
+  timeout: 120
+  cron_mode: deny
+  mcp_reload_confirm: true
+
+hooks_auto_accept: false
+
+security:
+  allow_private_urls: false
+  redact_secrets: true
+  tirith_enabled: true
+  tirith_fail_open: false
+
+tool_loop_guardrails:
+  hard_stop_enabled: true
+
+cron:
+  wrap_response: true
+
+kanban:
+  dispatch_in_gateway: true
+  dispatch_interval_seconds: 60
+
+code_execution:
+  mode: project
+  timeout: 300
+  max_tool_calls: 50
+
+sessions:
+  auto_prune: false
+  retention_days: 90
+  vacuum_after_prune: true
+
+session_reset:
+  mode: both
+  idle_minutes: 1440
+  at_hour: 4
+
+group_sessions_per_user: true
+
+platforms:
+  slack:
+    enabled: __SLACK_ENABLED__
+  telegram:
+    enabled: __TELEGRAM_ENABLED__
+  discord:
+    enabled: __DISCORD_ENABLED__
+  bluebubbles:
+    enabled: __BLUEBUBBLES_ENABLED__
+
+# Same broad tool access as the live operator. External writes remain protected
+# by approvals, connector permissions, and the owner's private operating rules.
+platform_toolsets:
+  cli: [a2a, hermes-cli, mcp-funding-director-core, mcp-funding-director-approvals]
+  telegram:
+    - a2a
+    - bfl
+    - browser
+    - clarify
+    - code_execution
+    - computer_use
+    - cronjob
+    - delegation
+    - file
+    - image_gen
+    - kanban
+    - memory
+    - mcp-funding-director-approvals
+    - mcp-funding-director-core
+    - session_search
+    - skills
+    - terminal
+    - todo
+    - tts
+    - vision
+    - web
+  slack:
+    - a2a
+    - bfl
+    - browser
+    - clarify
+    - code_execution
+    - computer_use
+    - cronjob
+    - delegation
+    - file
+    - image_gen
+    - kanban
+    - memory
+    - mcp-funding-director-approvals
+    - mcp-funding-director-core
+    - session_search
+    - skills
+    - terminal
+    - todo
+    - tts
+    - vision
+    - web
+  discord:
+    - a2a
+    - bfl
+    - browser
+    - clarify
+    - code_execution
+    - computer_use
+    - cronjob
+    - delegation
+    - file
+    - image_gen
+    - kanban
+    - memory
+    - mcp-funding-director-approvals
+    - mcp-funding-director-core
+    - session_search
+    - skills
+    - terminal
+    - todo
+    - tts
+    - vision
+    - web
+  bluebubbles:
+    - a2a
+    - bfl
+    - browser
+    - clarify
+    - code_execution
+    - computer_use
+    - cronjob
+    - delegation
+    - file
+    - image_gen
+    - kanban
+    - memory
+    - mcp-funding-director-approvals
+    - mcp-funding-director-core
+    - session_search
+    - skills
+    - terminal
+    - todo
+    - tts
+    - vision
+    - web
+  whatsapp:
+    - a2a
+    - bfl
+    - browser
+    - clarify
+    - code_execution
+    - computer_use
+    - cronjob
+    - delegation
+    - file
+    - image_gen
+    - kanban
+    - memory
+    - mcp-funding-director-approvals
+    - mcp-funding-director-core
+    - session_search
+    - skills
+    - terminal
+    - todo
+    - tts
+    - vision
+    - web
+
+# __TELEGRAM_HOME_START__
+TELEGRAM_HOME_CHANNEL: __TELEGRAM_HOME_CHANNEL__
+# __TELEGRAM_HOME_END__
+# __SLACK_HOME_START__
+SLACK_HOME_CHANNEL: __SLACK_HOME_CHANNEL__
+# __SLACK_HOME_END__
+
+mcp_servers:
+  funding-director-core:
+    command: /opt/hermes/.venv/bin/python
+    args: [-m, funding_director.mcp_server]
+    env:
+      PYTHONPATH: /opt/funding-director/src
+      FUNDING_DIRECTOR_CONFIG_DIR: /opt/funding-director-data/config
+      FUNDING_DIRECTOR_STATE_DIR: /opt/funding-director-data/state
+      GHL_API_KEY: ${GHL_API_KEY}
+      GHL_LOCATION_ID: ${GHL_LOCATION_ID}
+    trust: full
+    timeout: 120
+    tools:
+      exclude: [funding_submission_approve, ghl_action_approve]
+      resources: false
+      prompts: false
+
+  # The model cannot create an approval through the full-trust core above.
+  # These two tools are registered only through an untrusted MCP surface, so
+  # Hermes manual mode asks the human before the approval record is written.
+  funding-director-approvals:
+    command: /opt/hermes/.venv/bin/python
+    args: [-m, funding_director.mcp_server]
+    env:
+      PYTHONPATH: /opt/funding-director/src
+      FUNDING_DIRECTOR_CONFIG_DIR: /opt/funding-director-data/config
+      FUNDING_DIRECTOR_STATE_DIR: /opt/funding-director-data/state
+    trust: untrusted
+    timeout: 120
+    tools:
+      include: [funding_submission_approve, ghl_action_approve]
+      resources: false
+      prompts: false
+
+  super-browser:
+    command: /opt/super-browser/.venv/bin/python
+    args: [-m, super_browser.mcp_server]
+    env:
+      PYTHONPATH: /opt/super-browser/src
+      SUPER_BROWSER_REPO_ROOT: /opt/super-browser
+      PLAYWRIGHT_BROWSERS_PATH: /opt/playwright
+    timeout: 120
+
+# __COMPOSIO_START__
+  composio:
+    url: https://connect.composio.dev/mcp
+    headers:
+      x-consumer-api-key: __COMPOSIO_API_KEY__
+    timeout: 180
+# __COMPOSIO_END__
+
+# __FUNDING_MACHINE_START__
+  funding-machine:
+    url: https://marketplace-app.myfundingmachine.com/api/mcp
+    headers:
+      Authorization: __FUNDING_MACHINE_AUTHORIZATION__
+    trust: untrusted
+    timeout: 120
+# __FUNDING_MACHINE_END__

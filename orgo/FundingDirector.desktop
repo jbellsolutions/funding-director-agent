@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Open Funding Director
+Comment=Talk to Funding Director on this Orgo computer
+Exec=xfce4-terminal --title="Funding Director" --command="bash -lc 'hermes; exec bash'"
+Icon=utilities-terminal
+Terminal=false
+Categories=Office;

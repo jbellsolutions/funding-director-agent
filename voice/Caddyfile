@@ -1,0 +1,20 @@
+# The Operator voice endpoint — auto-TLS via Let's Encrypt.
+# /talk  -> widget page (static)
+# /ask   -> voice relay (bearer-authenticated in the app)
+# /healthz -> relay health
+__VOICE_DOMAIN__ {
+	handle /ask {
+		reverse_proxy 127.0.0.1:8787
+	}
+	handle /healthz {
+		reverse_proxy 127.0.0.1:8787
+	}
+	handle_path /talk* {
+		root * __BASE_DIR__/voice/www
+		rewrite * /talk.html
+		file_server
+	}
+	handle {
+		respond "The Operator" 200
+	}
+}

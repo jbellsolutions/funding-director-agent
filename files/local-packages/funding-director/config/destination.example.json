@@ -1,0 +1,8 @@
+{
+  "destination_id": "provider-portal-slug",
+  "name": "Provider Portal",
+  "status": "draft",
+  "adapter": "browser_playbook",
+  "product_ids": ["provider-program-slug"],
+  "playbook_ref": "private://provider/program/submission-playbook-v1"
+}

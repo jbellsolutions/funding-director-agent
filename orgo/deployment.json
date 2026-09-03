@@ -1,0 +1,22 @@
+{
+  "agent": "Funding Director",
+  "computer_name": "ai-guy-funding-director",
+  "orgo_template_ref": "system/hermes-agent@1.0.0",
+  "repository": "https://github.com/jbellsolutions/funding-director-agent",
+  "hardware": {
+    "os": "linux",
+    "ram_gb": 8,
+    "cpu": 2,
+    "disk_gb": 40,
+    "resolution": "1440x900x24"
+  },
+  "runtime": {
+    "hermes_release": "v2026.8.31",
+    "hermes_version": "0.21.0",
+    "hermes_commit": "29112bef099274229cadff79cdff7bf7b99c4b77",
+    "install_script_sha256": "85ef536d455e51ab67aa74d79272efd49fe717597dbaadfd3cca179a905f4706",
+    "a2a_port": 9900,
+    "profile": "funding-director",
+    "workflow_state": "funding-director.sqlite3"
+  }
+}

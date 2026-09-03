@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "private_content_policy": "Catalog metadata may be versioned. Recordings, transcripts, attachments, and private lesson content stay off Git and on the authorized Orgo computer.",
+  "sources": [
+    {
+      "source_id": "my-funding-machine-classroom",
+      "name": "My Funding Machine Classroom",
+      "access": "authenticated-private",
+      "status": "cataloged-private",
+      "observed_sections": [
+        "Deals & Underwriting Workshop",
+        "Funding Machine — How It Works",
+        "Fulfillment — Tag Team Funding",
+        "Funding Sales Training with Ty",
+        "Funding Leads (GHL)",
+        "The Hottest Funding Partners",
+        "BusinessLoans.com Leads ROI",
+        "Hidden Funding Gem — Home Equity",
+        "Earn While You Learn",
+        "Funding Sources",
+        "Funding Management Process",
+        "Funding Management Call SOP",
+        "0% Business/Personal Card Stacking System",
+        "Term Loan Stacking / Team Funding",
+        "Funding Process Step by Step (Qualified as is)",
+        "Funding Plan Creation Case Studies",
+        "Outside the Box Funding Solutions",
+        "SBA Express and SBA 7(a)/504",
+        "Business Lines of Credit and Loans",
+        "Merchant Cash Advances",
+        "Equipment Funding Solutions",
+        "Commercial Real Estate",
+        "Direct Business Lenders",
+        "Bridge Loans and Cash-Out Liquidation"
+      ],
+      "destination": "private runtime knowledge staging",
+      "redistributable": false
+    },
+    {
+      "source_id": "funding-machine-docs",
+      "name": "Funding Machine Documentation",
+      "access": "public",
+      "status": "active",
+      "url": "https://docs.myfundingmachine.com/llms.txt",
+      "redistributable": "link-and-derived-procedure-only",
+      "verified_capability": "The documented REST and MCP interfaces are read-only and do not initiate credit pulls or underwriting."
+    },
+    {
+      "source_id": "biz-funding-depot",
+      "name": "Biz Funding Depot",
+      "access": "public",
+      "status": "discovery-only",
+      "url": "https://bizfundingdepot.com/",
+      "redistributable": "link-and-product-family-metadata-only"
+    },
+    {
+      "source_id": "term-loan-solutions",
+      "name": "Term Loan Solutions",
+      "access": "authenticated-private-affiliate-portal",
+      "status": "observed-pending-program-verification",
+      "url": "https://app.termloansolutions.com/affiliate-portal",
+      "redistributable": false
+    }
+  ]
+}
