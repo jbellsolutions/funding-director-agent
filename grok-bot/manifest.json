@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "name": "Funding Operations Director",
+  "description": "A source-grounded backend funding operator for file readiness, operational underwriting, verified product routing, approval-controlled submissions, offers, follow-up, and pipeline truth.",
+  "source_repository": "https://github.com/jbellsolutions/funding-director-agent",
+  "public_share_url": null,
+  "public_share_verified_at": null,
+  "shared_configuration_is_public": true,
+  "client_security_boundary": "one-grok-user-computer-per-client",
+  "skills": [
+    "skills/file-intake-and-readiness.md",
+    "skills/operational-underwriting-and-routing.md",
+    "skills/submissions-and-offers.md",
+    "skills/pipeline-and-outcome-reporting.md"
+  ],
+  "routines": [
+    "routines/daily-case-and-exception-review.prompt",
+    "routines/daily-source-freshness.prompt",
+    "routines/weekly-funding-operations-review.prompt"
+  ],
+  "required_approval_actions": [
+    "send an external message",
+    "write or change CRM data",
+    "submit an application or document",
+    "initiate or authorize a credit pull",
+    "export applicant data",
+    "change a production record",
+    "activate a recurring routine"
+  ],
+  "permanently_denied_actions": [
+    "invent applicant facts, consent, eligibility, terms, or status",
+    "activate a product from public marketing alone",
+    "accept an offer or sign for a person or business",
+    "make an autonomous adverse-action decision",
+    "move money or release a payout",
+    "store or disclose credentials or raw restricted identifiers",
+    "alter audit history",
+    "expand its own permissions"
+  ]
+}
+

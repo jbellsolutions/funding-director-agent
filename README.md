@@ -122,6 +122,14 @@ Primary source map:
 ./orgo/verify.sh --static
 ```
 
+## Grok Bot edition
+
+The sanitized, downloadable Grok Bot package is in [`grok-bot/`](grok-bot/).
+It mirrors the Funding Director role, evidence hierarchy, approval boundaries,
+skills, and paused routines without including applicant data, credentials,
+provider contacts, private rate sheets, or paid training. Follow
+[`grok-bot/INSTALL.md`](grok-bot/INSTALL.md) to create a client-isolated copy.
+
 The suite checks schemas, state transitions, eligibility rules, sensitive-field
 rejection, duplicate prevention, exact approvals, emergency stop, offer math,
 CRM allowlists, installer pinning, shell/Python syntax, and secret leakage.

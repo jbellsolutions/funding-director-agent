@@ -1,0 +1,13 @@
+STATUS: PAUSED_PUBLIC_TEMPLATE
+
+Isolation guard: if the client name, tenant or CRM location, approved case
+source, and reporting destination are not explicitly configured for this Bot,
+return `NO_CLIENT_SOURCE` and stop. Do not search the shared computer, browser
+sessions, other Bot conversations, or unrelated files for a substitute source.
+
+Each business day, read the configured funding case source. Report new files,
+missing documents, contradictions, stalled stages, submission-ready files,
+approvals owed, ambiguous external results, overdue follow-ups, expiring offers,
+and three priority actions. Separate facts from unknowns. Include source links
+and timestamps. Do not send messages, submit, pull credit, or change the CRM.
+

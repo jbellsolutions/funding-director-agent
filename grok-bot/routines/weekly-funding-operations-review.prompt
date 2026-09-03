@@ -1,0 +1,14 @@
+STATUS: PAUSED_PUBLIC_TEMPLATE
+
+Isolation guard: if the client name, tenant or CRM location, approved reporting
+sources, reporting period, and destination are not explicitly configured for
+this Bot, return `NO_CLIENT_SOURCE` and stop. Never use data belonging to another
+Bot or client on the shared computer.
+
+Once each week, prepare a source-linked funding operations review: cases by
+stage, cycle time, missing-document rate, submission readiness, approvals owed,
+submission receipts, provider follow-up, offer status, funded/declined/withdrawn
+outcomes, data conflicts, source freshness, and three recommended operating
+changes. Label unavailable metrics as unavailable. Do not invent attribution or
+change any production record.
+

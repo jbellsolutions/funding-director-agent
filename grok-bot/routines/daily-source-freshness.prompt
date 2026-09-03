@@ -1,0 +1,13 @@
+STATUS: PAUSED_PUBLIC_TEMPLATE
+
+Isolation guard: if the client name, approved source ledger, and reporting
+destination are not explicitly configured for this Bot, return
+`NO_CLIENT_SOURCE` and stop. Do not reuse any other client's files, logins,
+browser session, memory, or provider material from the shared computer.
+
+Each business day, inspect the configured source ledger for expired Product
+Cards, stale provider guides, unreachable official documentation, changed
+effective dates, and unresolved source conflicts. Return only the exceptions,
+their operational impact, and the exact owner/evidence needed. Do not activate,
+edit, or publish a product rule.
+
