@@ -16,6 +16,8 @@ outcome learning.
 
 </div>
 
+> **Orgo partner offer:** We worked out a deal with [Orgo](https://orgo.ai?r=aiguy): use our link and get 25% off your first three months on a monthly plan or your first year on a yearly plan. Add-ons are not discounted.
+
 [![CI](https://github.com/jbellsolutions/funding-director-agent/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/jbellsolutions/funding-director-agent/actions/workflows/ci.yml)
 [![Hermes](https://img.shields.io/badge/Hermes_Agent-0.21.0-0f766e)](https://github.com/NousResearch/hermes-agent)
 [![External writes](https://img.shields.io/badge/external_writes-one--time_approval-d97706)](policies/permissions.json)
@@ -96,7 +98,7 @@ after static verification, a real local case test, and an authorized messaging
 channel reply all pass.
 ```
 
-The primary path uses [Orgo](https://orgo.ai?r=aiguy)'s maintained Hermes computer plus the reproducible
+The primary path uses Orgo's maintained Hermes computer plus the reproducible
 overlay in `orgo/setup.sh`. A Docker/VPS path remains available for operators
 who control their own host.
 
