@@ -96,7 +96,7 @@ after static verification, a real local case test, and an authorized messaging
 channel reply all pass.
 ```
 
-The primary path uses Orgo's maintained Hermes computer plus the reproducible
+The primary path uses [Orgo](https://orgo.ai?r=aiguy)'s maintained Hermes computer plus the reproducible
 overlay in `orgo/setup.sh`. A Docker/VPS path remains available for operators
 who control their own host.
 
