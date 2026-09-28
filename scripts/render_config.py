@@ -52,6 +52,8 @@ def main() -> int:
         "DEEPSEEK": bool(os.getenv("DEEPSEEK_API_KEY")),
         "TOGETHER": bool(os.getenv("TOGETHER_API_KEY")),
         "COMPOSIO": bool(os.getenv("COMPOSIO_API_KEY")),
+        "BROWSER_BOX": bool(os.getenv("BROWSER_BOX_URL") and os.getenv("BROWSER_BOX_TOKEN")),
+        "DATABOX": bool(os.getenv("DATABOX_URL") and os.getenv("DATABOX_TOKEN")),
         "FUNDING_MACHINE": bool(os.getenv("FUNDING_MACHINE_API_KEY")),
         "TELEGRAM_HOME": bool(os.getenv("TELEGRAM_HOME_CHANNEL")),
         "SLACK_HOME": bool(os.getenv("SLACK_HOME_CHANNEL")),
@@ -72,6 +74,10 @@ def main() -> int:
         "__TELEGRAM_HOME_CHANNEL__": scalar(os.getenv("TELEGRAM_HOME_CHANNEL", "")),
         "__SLACK_HOME_CHANNEL__": scalar(os.getenv("SLACK_HOME_CHANNEL", "")),
         "__COMPOSIO_API_KEY__": scalar(os.getenv("COMPOSIO_API_KEY", "")),
+        "__BROWSER_BOX_MCP_URL__": scalar(os.getenv("BROWSER_BOX_URL", "").rstrip("/") + "/mcp"),
+        "__BROWSER_BOX_AUTH__": scalar("Bearer " + os.getenv("BROWSER_BOX_TOKEN", "")),
+        "__DATABOX_MCP_URL__": scalar(os.getenv("DATABOX_URL", "").rstrip("/") + "/mcp"),
+        "__DATABOX_AUTH__": scalar("Bearer " + os.getenv("DATABOX_TOKEN", "")),
         "__FUNDING_MACHINE_AUTHORIZATION__": scalar(
             "Bearer " + os.getenv("FUNDING_MACHINE_API_KEY", "")
         ),

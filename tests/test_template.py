@@ -91,6 +91,7 @@ class TemplateTests(unittest.TestCase):
         env = {**os.environ, "HERMES_MODEL": "openai/gpt-5.6-luna", "AGENT_PERSONA": "concise", **extra}
         for name in (
             "FIREWORKS_API_KEY", "DEEPSEEK_API_KEY", "TOGETHER_API_KEY", "COMPOSIO_API_KEY",
+            "BROWSER_BOX_URL", "BROWSER_BOX_TOKEN", "DATABOX_URL", "DATABOX_TOKEN",
             "FUNDING_MACHINE_API_KEY", "TELEGRAM_HOME_CHANNEL", "SLACK_HOME_CHANNEL",
             "SLACK_BOT_TOKEN", "SLACK_APP_TOKEN", "TELEGRAM_BOT_TOKEN", "DISCORD_BOT_TOKEN",
             "BLUEBUBBLES_SERVER_URL", "BLUEBUBBLES_PASSWORD",
@@ -195,6 +196,21 @@ class TemplateTests(unittest.TestCase):
         self.assertIn("funding-director-core.trust full", setup)
         self.assertIn("funding-director-approvals.trust untrusted", setup)
         self.assertIn("EXTERNAL_WRITES_STOPPED", (ROOT / "orgo/emergency-stop.sh").read_text())
+
+    def test_config_render_attaches_browser_box_read_only_and_data_box(self) -> None:
+        self.assertNotIn("browser-box:", self._render({}))
+        text = self._render({
+            "BROWSER_BOX_URL": "https://box.example.test/",
+            "BROWSER_BOX_TOKEN": "placeholder-box",
+            "DATABOX_URL": "https://data.example.test",
+            "DATABOX_TOKEN": "placeholder-data",
+        })
+        self.assertIn('url: "https://box.example.test/mcp"', text)
+        self.assertIn('Authorization: "Bearer placeholder-box"', text)
+        self.assertIn("include: [fetch, read, session, status]", text)
+        self.assertIn('url: "https://data.example.test/mcp"', text)
+        self.assertIn("super-browser:", text)
+        self.assertNotIn("__", text)
 
     def test_skill_frontmatter_is_valid(self) -> None:
         skill_paths = sorted((ROOT / "files/skills").rglob("SKILL.md"))
