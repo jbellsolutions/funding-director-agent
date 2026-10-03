@@ -352,10 +352,13 @@ mcp_servers:
 
 # __DATABOX_START__
   data-box:
-    # Page data: URL -> markdown, text or links, with a per-call cost cap (max_cost_usd).
+    # Page data: URL -> markdown, text or links. A paid rung never runs without approval.
+    # plan/execute/sources (priced lead pulls) are left out until there is an approval step.
     url: __DATABOX_MCP_URL__
     headers:
       Authorization: __DATABOX_AUTH__
+    tools:
+      include: [status, scrape, job]
     timeout: 180
 # __DATABOX_END__
 
