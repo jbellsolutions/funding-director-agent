@@ -338,6 +338,30 @@ mcp_servers:
       PLAYWRIGHT_BROWSERS_PATH: /opt/playwright
     timeout: 120
 
+# __BROWSER_BOX_START__
+  browser-box:
+    # Reads pages in a real browser. Read tools only; browser actions that write stay on
+    # Super Browser's approval lifecycle. Self-host: github.com/jbellsolutions/box-kit
+    url: __BROWSER_BOX_MCP_URL__
+    headers:
+      Authorization: __BROWSER_BOX_AUTH__
+    tools:
+      include: [fetch, read, session, status]
+    timeout: 180
+# __BROWSER_BOX_END__
+
+# __DATABOX_START__
+  data-box:
+    # Page data: URL -> markdown, text or links. A paid rung never runs without approval.
+    # plan/execute/sources (priced lead pulls) are left out until there is an approval step.
+    url: __DATABOX_MCP_URL__
+    headers:
+      Authorization: __DATABOX_AUTH__
+    tools:
+      include: [status, scrape, job]
+    timeout: 180
+# __DATABOX_END__
+
 # __COMPOSIO_START__
   composio:
     url: https://connect.composio.dev/mcp

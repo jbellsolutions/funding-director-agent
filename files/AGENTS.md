@@ -39,7 +39,9 @@ owner has an urgent task, do it first and return to onboarding afterward.
 - Submission execution: `submission-operator`, approved API adapter, or supervised
   Orgo browser playbook.
 - Founder briefs: `founder-handoff` through Slack or Telegram.
-- Browser research and browser work: Super Browser; preserve sources.
+- Reading a page: browser-box (`read`, `fetch`) when it is connected. Page data: data-box
+  (`scrape`). Everything else in a browser, and any browser action that writes: Super Browser.
+  Preserve sources.
 - Durable work: Hermes Kanban plus the funding core's configured SQLite state.
 - Durable decisions and private procedures: `/opt/data/agent-knowledge` and `/vault`.
 

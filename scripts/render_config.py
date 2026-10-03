@@ -36,6 +36,12 @@ def strip_block(text: str, name: str) -> str:
     return "\n".join(output) + "\n"
 
 
+def mcp_endpoint(name: str) -> str:
+    """Accept a box URL with or without its /mcp suffix (box-kit prints it with)."""
+    base = os.getenv(name, "").strip().rstrip("/")
+    return scalar(base.removesuffix("/mcp") + "/mcp")
+
+
 def keep_block(text: str, name: str) -> str:
     return text.replace(f"# __{name}_START__\n", "").replace(f"# __{name}_END__\n", "")
 
@@ -52,6 +58,8 @@ def main() -> int:
         "DEEPSEEK": bool(os.getenv("DEEPSEEK_API_KEY")),
         "TOGETHER": bool(os.getenv("TOGETHER_API_KEY")),
         "COMPOSIO": bool(os.getenv("COMPOSIO_API_KEY")),
+        "BROWSER_BOX": bool(os.getenv("BROWSER_BOX_URL") and os.getenv("BROWSER_BOX_TOKEN")),
+        "DATABOX": bool(os.getenv("DATABOX_URL") and os.getenv("DATABOX_TOKEN")),
         "FUNDING_MACHINE": bool(os.getenv("FUNDING_MACHINE_API_KEY")),
         "TELEGRAM_HOME": bool(os.getenv("TELEGRAM_HOME_CHANNEL")),
         "SLACK_HOME": bool(os.getenv("SLACK_HOME_CHANNEL")),
@@ -72,6 +80,10 @@ def main() -> int:
         "__TELEGRAM_HOME_CHANNEL__": scalar(os.getenv("TELEGRAM_HOME_CHANNEL", "")),
         "__SLACK_HOME_CHANNEL__": scalar(os.getenv("SLACK_HOME_CHANNEL", "")),
         "__COMPOSIO_API_KEY__": scalar(os.getenv("COMPOSIO_API_KEY", "")),
+        "__BROWSER_BOX_MCP_URL__": mcp_endpoint("BROWSER_BOX_URL"),
+        "__BROWSER_BOX_AUTH__": scalar("Bearer " + os.getenv("BROWSER_BOX_TOKEN", "")),
+        "__DATABOX_MCP_URL__": mcp_endpoint("DATABOX_URL"),
+        "__DATABOX_AUTH__": scalar("Bearer " + os.getenv("DATABOX_TOKEN", "")),
         "__FUNDING_MACHINE_AUTHORIZATION__": scalar(
             "Bearer " + os.getenv("FUNDING_MACHINE_API_KEY", "")
         ),
